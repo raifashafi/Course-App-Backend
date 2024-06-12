@@ -29,6 +29,20 @@ app.get("/view",(req,res)=>
         }
     )
 })
-app.listen(8081,()=>{
+app.post("/search",(req,res)=>{
+    let input=req.body
+    coursemodel.find(input).then(
+        (data)=>
+            {
+                res.json(data)
+            }
+    ).catch(
+        (error)=>
+            {
+                res.json(error)
+            }
+    )
+})
+app.listen(8082,()=>{
     console.log("server started")
 })
